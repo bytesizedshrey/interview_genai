@@ -2,6 +2,7 @@ import { model } from "mongoose";
 import userModel from "../models/user.model.js";
 import bcrypt from "bcryptjs";
 import jwt from 'jsonwebtoken'
+import tokenBlacklistModel from "../models/blacklist.model.js";
 
 /**
  * @route POST /api/auth/register
@@ -34,7 +35,7 @@ async function registerUserController(req, res) {
     const user = await userModel.create({
         username,
         email,
-        password
+        password : hash
     })
     //creating token
     const token = jwt.sign(
@@ -97,7 +98,22 @@ async function loginUserController(req,res) {
     })
 }
 
+async function logoutUserController(req,res) {
+    const token = req.cookies.token
+
+    if(token){
+        await tokenBlacklistModel.create({token})
+    }
+
+    res.clearCookie("token")
+
+    res.status(200).json({
+        message : 'user logged out successfully.'
+    })
+}
+
 export default {
     registerUserController,
-    loginUserController
+    loginUserController,
+    logoutUserController
 }
