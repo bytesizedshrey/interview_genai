@@ -1,4 +1,3 @@
-import { model } from "mongoose";
 import userModel from "../models/user.model.js";
 import bcrypt from "bcryptjs";
 import jwt from 'jsonwebtoken'
@@ -123,7 +122,7 @@ async function logoutUserController(req,res) {
  * @access Private
  */
 async function getMeController(req,res) {
-    const user = await userModel.findById(req,user.id)
+    const user = await userModel.findById(req.user.id)
 
     res.status(200).json({
         message : "user details fetched suncessfully.",
