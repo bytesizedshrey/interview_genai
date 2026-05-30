@@ -3,8 +3,6 @@ import '../auth.form.scss'
 import { useAuth } from '../hooks/useAuth';
 import { useState } from 'react';
 
-
-
 const Login = () => {
 
     const navigate = useNavigate()
