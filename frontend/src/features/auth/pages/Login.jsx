@@ -17,6 +17,7 @@ const Login = () => {
     const handleSubmit = async(e) =>{
         e.preventDefault()
         handleLogin({email,password})
+        navigate('/')
     }
 
     if(loading){
