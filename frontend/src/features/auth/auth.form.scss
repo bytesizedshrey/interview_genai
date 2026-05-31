@@ -1,40 +1,202 @@
-main {
-    min-height: 100vh;
-    width: 100%;
+// Skeumorphic Mainframe Theme for Forms
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+main {
+  min-height: 100vh;
+  width: 100%;
+  background-color: #0c0e12; // deep retro background
+  background-image: radial-gradient(circle at center, #1b202a 0%, #0c0e12 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Outfit', 'Inter', sans-serif;
+  padding: 1.5rem;
+  box-sizing: border-box;
 }
 
 .form-container {
-    min-width: 350px;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+  min-width: 400px;
+  max-width: 480px;
+  background: linear-gradient(135deg, #1b1e25 0%, #111418 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  border-left: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 1.25rem;
+  padding: 2.5rem;
+  box-sizing: border-box;
+  
+  // Real 3D physical elevation shadow
+  box-shadow: 
+    15px 15px 30px rgba(0, 0, 0, 0.6), 
+    -5px -5px 15px rgba(255, 255, 255, 0.02),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  position: relative;
+  overflow: hidden;
+
+  // physical corner bolt details
+  &::before, &::after {
+    content: '';
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: #2a313d;
+    border-radius: 50%;
+    box-shadow: inset 1px 1px 2px rgba(0,0,0,0.8), 1px 1px 0 rgba(255,255,255,0.05);
+  }
+  &::before { top: 12px; left: 12px; }
+  &::after { top: 12px; right: 12px; }
+
+  h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    color: #ff2d78;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    text-align: center;
+    margin: 0;
+    text-shadow: 0 0 12px rgba(255, 45, 120, 0.4);
+    position: relative;
+    padding-bottom: 0.75rem;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 25%;
+      width: 50%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #ff2d78, transparent);
+      box-shadow: 0 0 8px #ff2d78;
+    }
+  }
+
+  p {
+    text-align: center;
+    font-size: 0.875rem;
+    color: #7d8590;
+    margin: 0;
+
+    a {
+      color: #ff2d78;
+      font-weight: 600;
+      text-decoration: none;
+      transition: text-shadow 0.2s, color 0.2s;
+      
+      &:hover {
+        color: #ff6b9d;
+        text-shadow: 0 0 8px rgba(255, 107, 157, 0.6);
+      }
+    }
+  }
 }
 
 form {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
 .input-group {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 
-    input {
-        border: none;
-        outline: none;
-        padding-inline: 1rem;
-        padding-block: 0.75rem;
-        border-radius: 0.75rem;
+  label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #a3b3cc;
+    text-shadow: 0 1px 0 rgba(0,0,0,0.5);
+    margin-left: 2px;
+  }
+
+  input {
+    background-color: #0b0d10;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    outline: none;
+    padding: 0.875rem 1.1rem;
+    border-radius: 0.75rem;
+    color: #00ff66; // glowing terminal green text
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.95rem;
+    letter-spacing: 0.03em;
+    
+    // physical sunken inset shadow
+    box-shadow: 
+      inset 3px 3px 6px rgba(0, 0, 0, 0.85),
+      inset -1px -1px 2px rgba(255, 255, 255, 0.02);
+    
+    transition: box-shadow 0.25s, border-color 0.25s, color 0.25s;
+
+    &::placeholder {
+      color: rgba(0, 255, 102, 0.25);
     }
+
+    &:focus {
+      border-color: rgba(255, 45, 120, 0.4);
+      color: #ff6b9d; // turns pink on active focus
+      box-shadow: 
+        inset 3px 3px 6px rgba(0, 0, 0, 0.9),
+        0 0 10px rgba(255, 45, 120, 0.15);
+
+      &::placeholder {
+        color: rgba(255, 45, 120, 0.2);
+      }
+    }
+  }
 }
 
-a {
-    color: #3B2F2F;
-    text-decoration: none;
+// Custom Premium physical Cyber Pink Buttons
+.button.primary-button {
+  background: linear-gradient(180deg, #ff4c8a 0%, #d81b60 100%);
+  color: #ffffff;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-top: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 0.75rem;
+  padding: 0.9rem 1.5rem;
+  cursor: pointer;
+  
+  // Real tactile 3D shadow map
+  box-shadow: 
+    0 4px 0 #9c003c, // physical button depth
+    0 6px 12px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  
+  transition: transform 0.05s, box-shadow 0.05s;
+  
+  &:hover {
+    background: linear-gradient(180deg, #ff5c96 0%, #e92671 100%);
+    box-shadow: 
+      0 4px 0 #9c003c,
+      0 8px 16px rgba(255, 45, 120, 0.25),
+      inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  }
+
+  // Physically depress when active
+  &:active {
+    transform: translateY(3px);
+    box-shadow: 
+      0 1px 0 #9c003c,
+      0 2px 4px rgba(0, 0, 0, 0.5),
+      inset 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+}
+
+@media (max-width: 480px) {
+  .form-container {
+    min-width: 100%;
+    padding: 1.75rem;
+  }
 }

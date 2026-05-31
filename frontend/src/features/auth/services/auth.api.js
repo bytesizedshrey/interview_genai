@@ -43,6 +43,6 @@ export async function getMe() {
         const response = await api.get('/api/auth/get-me')
         return response.data
     } catch (error) {
-        console.log(err)
+        console.log(error)
     }
 }

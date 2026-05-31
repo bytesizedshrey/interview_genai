@@ -32,7 +32,7 @@ const Register = () => {
                     <div className="input-group">
                         <label htmlFor="username">Username</label>
                         <input
-                        onChange={(e) => {setusername(e.target.username)}}
+                            onChange={(e) => {setusername(e.target.value)}}
                             type="text"
                             id="username"
                             name="username"
@@ -43,7 +43,7 @@ const Register = () => {
                     <div className="input-group">
                         <label htmlFor="email">Email</label>
                         <input
-                        onChange={(e) => {setemail(e.target.value)}}
+                            onChange={(e) => {setemail(e.target.value)}}
                             type="email"
                             id="email"
                             name="email"
@@ -54,7 +54,7 @@ const Register = () => {
                     <div className="input-group">
                         <label htmlFor="password">Password</label>
                         <input
-                        onChange={(e) => {setpassword(e.target.value)}}
+                            onChange={(e) => {setpassword(e.target.value)}}
                             type="password"
                             id="password"
                             name="password"
@@ -64,7 +64,7 @@ const Register = () => {
 
                     <button
                         type="submit"
-                        className="button primary-button active"
+                        className="button primary-button"
                     >
                         Register
                     </button>
